@@ -8,4 +8,5 @@ else
  exit
 fi
 
-sed -i '/myhostname/cmyhostname = $NAME' main.cf
+cd /etc/postfix/
+sed -i '/myhostname/cmyhostname = '$NAME'' main.cf

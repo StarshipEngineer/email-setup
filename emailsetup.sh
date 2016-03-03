@@ -18,6 +18,9 @@ else
  exit
 fi
 
-sed -i '/myhostname/cmyhostname = $NAME' main.cf
+sed -i '/myhostname/cmyhostname = '$NAME'' main.cf
 
 service postfix restart
+
+sed -i -e "\$ahome_mailbox = Maildir/" main.cf
+sed -i -e "\$amailbox_command =" main.cf
