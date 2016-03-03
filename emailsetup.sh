@@ -1,8 +1,8 @@
 #!/usr/bin/bash
 
-sudo apt-get update
-sudo apt-get upgrade
-sudo apt-get install postfix
+apt-get update
+apt-get -y upgrade
+apt-get -y install postfix
 
 cd /etc/postfix/
 sed -i -e "\$ainet_protocols = ipv4" main.cf
@@ -24,3 +24,17 @@ service postfix restart
 
 sed -i -e "\$ahome_mailbox = Maildir/" main.cf
 sed -i -e "\$amailbox_command =" main.cf
+
+apt-get -y install dovecot-common dovecot-imapd
+
+#put the following in another script that just adds new users, to be run whenever an account is set up
+maildirmake.dovecot /etc/skel/Maildir
+maildirmake.dovecot /etc/skel/Maildir/.Drafts
+maildirmake.dovecot /etc/skel/Maildir/.Sent
+maildirmake.dovecot /etc/skel/Maildir/.Spam
+maildirmake.dovecot /etc/skel/Maildir/.Trash
+maildirmake.dovecot /etc/skel/Maildir/.Templates
+
+cp -r /etc/skel/Maildir /home/USER/
+chown -R USER:USER /home/USER/Maildir
+chmod -R 700 /home/USER/Maildir
