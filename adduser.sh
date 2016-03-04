@@ -1,4 +1,8 @@
-#
+# A menu to select whether to add a user or exit
+# Should offer a prompt to enter another user after one is entered
+#main options: set up email for existing user, set up mail for new user, or exit
+
+USER=$()
 
 maildirmake.dovecot /etc/skel/Maildir
 maildirmake.dovecot /etc/skel/Maildir/.Drafts
