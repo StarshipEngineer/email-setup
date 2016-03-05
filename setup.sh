@@ -38,6 +38,16 @@ sed -i -e "\$amailbox_command =" main.cf
 
 apt-get -y install dovecot-common dovecot-imapd
 
+#currently here
+
 # Add users; must be called from /etc/postfix? Check openvpnsetup
+
+maildirmake.dovecot /etc/skel/Maildir
+maildirmake.dovecot /etc/skel/Maildir/.Drafts
+maildirmake.dovecot /etc/skel/Maildir/.Sent
+maildirmake.dovecot /etc/skel/Maildir/.Spam
+maildirmake.dovecot /etc/skel/Maildir/.Trash
+maildirmake.dovecot /etc/skel/Maildir/.Templates
+
 ./adduser.sh
 
