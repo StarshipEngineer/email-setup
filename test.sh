@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 
 # recursion test
 exitstatus=0
