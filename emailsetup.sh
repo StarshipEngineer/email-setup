@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 
 # Make component scripts executable
 chmod +x setup.sh
