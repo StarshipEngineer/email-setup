@@ -13,6 +13,7 @@ fi
 
 
 # recursion test
+# is formal recursion necessary? This just kicks you back to main screen anyway
 exitstatus=0
 while [ $exitstatus = 0 ]
 do
