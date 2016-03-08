@@ -17,8 +17,7 @@ do
 	CHOICE=$(whiptail --title "Email setup" --menu "Setup options:" 16 78 3 \
 	"01" "Setup email" \
 	"02" "Add an existing user" \
-	"03" "Add a new user" \
-	"04" "Remove email" 3>&1 1>&2 2>&3)
+	"03" "Remove email" 3>&1 1>&2 2>&3)
 
 # add options for setting up components and full install
 
@@ -26,16 +25,13 @@ do
 		01)
 		 #command
 		 whiptail --title "Setup email" --infobox "1" 8 78
-  ./setup.sh
+		 ./setup.sh
 		;;
 		02)
-		 whiptail --title "Add an existing user" --infobox "2" 8 78
-  #./adduser.sh
+		 whiptail --title "Add a user" --infobox "2" 8 78
+		 ./adduser.sh
 		;;
 		03)
-		 whiptail --title "Add a new user" --infobox "3" 8 78
-		;;
-		04)
 		 whiptail --title "Remove email" --infobox "4" 8 78
 		;;
 		*)
