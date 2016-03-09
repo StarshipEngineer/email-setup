@@ -24,15 +24,15 @@ do
 	case "${CHOICE}" in
 		01)
 		 #command
-		 whiptail --title "Setup email" --msgbox "1" 8 78
+		 whiptail --title "Setup email" --msgbox "sets up email" 8 78
 		 #./setup.sh
 		;;
 		02)
-		 whiptail --title "Add a user" --msgbox "2" 8 78
+		 whiptail --title "Add a user" --msgbox "adds user" 8 78
 		 #./adduser.sh
 		;;
 		03)
-		 whiptail --title "Remove email" --msgbox "4" 8 78
+		 whiptail --title "Remove email" --msgbox "removes email" 8 78
 		;;
 		*)
 			exitstatus=1

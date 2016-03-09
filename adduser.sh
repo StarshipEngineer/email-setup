@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 
 # A menu to select whether to add a user or exit
 # Should offer a prompt to enter another user after one is entered
@@ -18,4 +18,4 @@ cp -r /etc/skel/Maildir /home/$USER/
 chown -R $USER:$USER /home/$USER/Maildir
 chmod -R 700 /home/$USER/Maildir
 
-# idea- give an option to correct entry, or unnecessary? if it kicks back, should go back to main menu
+# idea- give an option to correct entry, or unnecessary? if it kicks back, should go back to main menu; could do yes/no box in this script to continue or re-enter
