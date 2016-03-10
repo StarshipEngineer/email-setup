@@ -45,10 +45,6 @@ maildirmake.dovecot /etc/skel/Maildir/.Spam
 maildirmake.dovecot /etc/skel/Maildir/.Trash
 maildirmake.dovecot /etc/skel/Maildir/.Templates
 
-
-
-# Add users; must be called from /etc/postfix? Check openvpnsetup
-
 ./adduser.sh
 
 #currently here
