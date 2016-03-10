@@ -47,3 +47,12 @@ maildirmake.dovecot /etc/skel/Maildir/.Templates
 ./adduser.sh
 
 #currently here
+
+sed -i -e "\$asmtpd_recipient_restrictions =/
+    permit_sasl_authenticated,/
+    permit_mynetworks,/
+    reject_unauth_destination" main.cf
+
+service postfix reload
+
+#comment out permit my networks
