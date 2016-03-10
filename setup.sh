@@ -13,10 +13,6 @@ cd /etc/postfix/
 cp main.cf main.cf.BAK
 cp master.cf master.cf.BAK
 
-
-# Add changes to main 
-sed -i -e "\$ainet_protocols = ipv4" main.cf
-
 # Enter hostname and alter main to have it
 NAME=$(whiptail --inputbox "Enter your fully-qualified domain name (ex example.com):" \
 8 78 --title "Setup OpenVPN" 3>&1 1>&2 2>&3)
@@ -29,6 +25,9 @@ else
 fi
 
 sed -i '/myhostname/cmyhostname = '$NAME'' main.cf
+
+# Add changes to main 
+sed -i -e "\$ainet_protocols = ipv4" main.cf
 
 service postfix restart
 
