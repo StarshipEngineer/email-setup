@@ -2,6 +2,8 @@
 
 cd /etc/postfix
 
+
+
 #sed -i -e "\$a/
     #smtpd_recipient_restrictions =
     #permit_sasl_authenticated,
@@ -9,5 +11,3 @@ cd /etc/postfix
     #reject_unauth_destination" main.cf
 
 service postfix reload
-
-cat /home/pi/email-setup/config.txt>>main.cf
