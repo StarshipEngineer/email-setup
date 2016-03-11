@@ -10,4 +10,7 @@ cd /etc/postfix
     #permit_mynetworks,
     #reject_unauth_destination" main.cf
 
-service postfix reload
+cp /home/pi/email-setup/helo_access.txt helo_access
+
+postmap /etc/postfix/helo_access
+service postfix restart

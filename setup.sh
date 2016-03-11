@@ -47,8 +47,12 @@ maildirmake.dovecot /etc/skel/Maildir/.Templates
 
 ./adduser.sh
 
-#currently here
-
 service postfix reload
 
-#comment out permit my networks
+
+#currently here
+
+cp /home/pi/email-setup/helo_access.txt helo_access
+
+postmap /etc/postfix/helo_access
+service postfix restart
