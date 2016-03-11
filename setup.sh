@@ -27,13 +27,14 @@ fi
 sed -i '/myhostname/cmyhostname = '$NAME'' main.cf
 
 # Add changes to main 
-sed -i -e "\$ainet_protocols = ipv4" main.cf
+cat /home/pi/email-setup/config.txt>>main.cf
+#sed -i -e "\$ainet_protocols = ipv4" main.cf
 
 service postfix restart
 
 # More changes to main
-sed -i -e "\$ahome_mailbox = Maildir/" main.cf
-sed -i -e "\$amailbox_command =" main.cf
+#sed -i -e "\$ahome_mailbox = Maildir/" main.cf
+#sed -i -e "\$amailbox_command =" main.cf
 
 apt-get -y install dovecot-common dovecot-imapd
 
@@ -47,11 +48,6 @@ maildirmake.dovecot /etc/skel/Maildir/.Templates
 ./adduser.sh
 
 #currently here
-
-sed -i -e "\$asmtpd_recipient_restrictions =/
-    permit_sasl_authenticated,/
-    permit_mynetworks,/
-    reject_unauth_destination" main.cf
 
 service postfix reload
 
