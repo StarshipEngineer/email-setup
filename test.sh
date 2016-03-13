@@ -2,4 +2,4 @@
 
 cd /etc/dovecot
 
-sed -i -e '\listen =\clisten = *' dovecot.conf
+sed -i -e '/#listen/clisten = *' dovecot.conf
