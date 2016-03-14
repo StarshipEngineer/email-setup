@@ -49,10 +49,14 @@ maildirmake.dovecot /etc/skel/Maildir/.Templates
 
 service postfix reload
 
-
-#currently here
-
 cp /home/pi/email-setup/helo_access.txt helo_access
 
 postmap /etc/postfix/helo_access
 service postfix restart
+
+sed -i -e '/#listen =/clisten = *' dovecot.conf
+
+service dovecot restart
+
+#currently here
+

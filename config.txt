@@ -17,3 +17,5 @@ smtpd_helo_restrictions =
     reject_non_fqdn_helo_hostname,
     reject_unknown_helo_hostname,
     check_helo_access hash:/etc/postfix/helo_access
+
+smtpd_sasl_type = dovecot smtpd_sasl_path = private/auth smtpd_sasl_auth_enable = yes
