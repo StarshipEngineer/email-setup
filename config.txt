@@ -1,5 +1,6 @@
 
 inet_protocols = ipv4
+smtp_sasl_auth_enable = yes smtpd_sasl_auth_enable = yes
 
 home_mailbox = Maildir/
 mailbox_command =

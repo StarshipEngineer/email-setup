@@ -1,8 +1,4 @@
 #!/bin/bash
 
-#cd /etc/dovecot
-
-adduser testmail
-
-service postfix restart
-service dovecot restart
+sed -i '\$asmtp_sasl_auth_enable = yes' /etc/postfix/main.cf
+sed -i '\$asmtpd_sasl_auth_enable = yes' /etc/postfix/main.cf
