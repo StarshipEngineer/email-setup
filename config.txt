@@ -1,6 +1,5 @@
 
 inet_protocols = ipv4
-smtp_sasl_auth_enable = yes smtpd_sasl_auth_enable = yes
 
 home_mailbox = Maildir/
 mailbox_command =
@@ -19,4 +18,7 @@ smtpd_helo_restrictions =
     reject_unknown_helo_hostname,
     check_helo_access hash:/etc/postfix/helo_access
 
-smtpd_sasl_type = dovecot smtpd_sasl_path = private/auth smtpd_sasl_auth_enable = yes
+smtpd_sasl_type = dovecot
+smtpd_sasl_path = private/auth
+smtp_sasl_auth_enable = yes
+smtpd_sasl_auth_enable = yes
