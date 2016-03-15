@@ -1,4 +1,8 @@
 #!/bin/bash
 
-sed -i -e '\$asmtp_sasl_auth_enable = yes' /etc/postfix/main.cf
-sed -i -e '\$asmtpd_sasl_auth_enable = yes' /etc/postfix/main.cf
+cd /etc/postfix
+
+sed -i "\$asmtp_sasl_auth_enable = yes" main.cf
+sed -i "\$asmtpd_sasl_auth_enable = yes" main.cf
+
+#sed -i -e "\$ainet_protocols = ipv4" main.cf
