@@ -36,7 +36,7 @@ service postfix restart
 #sed -i -e "\$ahome_mailbox = Maildir/" main.cf
 #sed -i -e "\$amailbox_command =" main.cf
 
-apt-get -y install dovecot-common dovecot-imapd
+apt-get -y install dovecot dovecot-core dovecot-imapd
 
 maildirmake.dovecot /etc/skel/Maildir
 maildirmake.dovecot /etc/skel/Maildir/.Drafts
