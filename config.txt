@@ -20,5 +20,4 @@ smtpd_helo_restrictions =
 
 smtpd_sasl_type = dovecot
 smtpd_sasl_path = private/auth
-smtp_sasl_auth_enable = yes
 smtpd_sasl_auth_enable = yes
