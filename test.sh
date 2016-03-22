@@ -1,3 +1,3 @@
 #!/bin/bash
 
-cat /home/pi/email-setup/10-master.txt>>/home/pi/testdir/10-master.conf
+cat /home/pi/email-setup/10-master.txt>>/etc/dovecot/conf.d/10-master.conf
