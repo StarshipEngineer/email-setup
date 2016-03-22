@@ -25,7 +25,7 @@ do
 		01)
 		 #command
 		 whiptail --title "Setup email" --msgbox "sets up email" 8 78
-		 ./setup.sh
+		 ./install.sh
 		;;
 		02)
 		 whiptail --title "Add a user" --msgbox "adds user" 8 78
