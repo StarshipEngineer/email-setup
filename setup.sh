@@ -66,6 +66,7 @@ cp /etc/dovecot/conf.d/10-auth.conf /etc/dovecot/conf.d/10-auth.conf.BAK
 
 sed -i ':mail_location = mbox:~/mail:INBOX=/var/mail/%u:cmail_location = maildir:~/Maildir' /etc/dovecot/conf.d/10-mail.conf
 
+#problem here: try test scripting solutions
 sed -i ':unix_listener auth-userdb {:cunix_listener /var/spool/postfix/private/auth {' /etc/dovecot/conf.d/10-master.conf
 sed -i '/#mode/cmode = 0660' /etc/dovecot/conf.d/10-master.conf
 sed -i '/#user/cuser = postfix' /etc/dovecot/conf.d/10-master.conf
