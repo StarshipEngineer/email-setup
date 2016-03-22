@@ -28,13 +28,6 @@ sed -i '/myhostname/cmyhostname = '$NAME'' main.cf
 
 # Add changes to main 
 cat /home/pi/email-setup/config.txt>>main.cf
-#sed -i -e "\$ainet_protocols = ipv4" main.cf
-
-service postfix restart
-
-# More changes to main
-#sed -i -e "\$ahome_mailbox = Maildir/" main.cf
-#sed -i -e "\$amailbox_command =" main.cf
 
 apt-get -y install dovecot-core dovecot-imapd
 
@@ -75,9 +68,7 @@ sed -i '/#group/cgroup = postfix' /etc/dovecot/conf.d/10-master.conf
 sed -i '/disable_plaintext_auth =/cdisable_plaintext_auth= no' /etc/dovecot/conf.d/10-auth.conf
 sed -i '/auth_mechanisms =/cauth_mechanisms = plain login' /etc/dovecot/conf.d/10-auth.conf
 
-#add testuser
-#service postfix restart
-#service dovecot restart
+sed -i "/#smtps/csmtps inet n - - - - smtpd" /etc/postfix/master.cf
 
 #currently here
 
