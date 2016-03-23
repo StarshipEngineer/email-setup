@@ -53,14 +53,19 @@ cp /etc/dovecot/conf.d/10-master.conf /etc/dovecot/conf.d/10-master.conf.BAK
 cp /etc/dovecot/conf.d/10-auth.conf /etc/dovecot/conf.d/10-auth.conf.BAK
 
 #Modify dovecot config files
-sed -i ':mail_location = mbox:~/mail:INBOX=/var/mail/%u:cmail_location = maildir:~/Maildir' /etc/dovecot/conf.d/10-mail.conf
+
+sed -i '30c \mail_location = maildir:~/Maildir' /etc/dovecot/conf.d/10-mail.conf
 
 cat /home/pi/email-setup/10-master.txt>>/etc/dovecot/conf.d/10-master.conf
 
 sed -i '/disable_plaintext_auth =/cdisable_plaintext_auth= no' /etc/dovecot/conf.d/10-auth.conf
 sed -i '/auth_mechanisms =/cauth_mechanisms = plain login' /etc/dovecot/conf.d/10-auth.conf
 
-sed -i "/#smtps/csmtps inet n - - - - smtpd" /etc/postfix/master.cf
+sed -i "28c \smtps     inet  n       -       -       -       -       smtpd" /etc/postfix/master.cf
+
+sed -i "29c \-o syslog_name=postfix/smtps" /etc/postfix/master.cf
+
+sed -i "30c \-o smtpd_tls_wrappermode=yes" /etc/postfix/master.cf
 
 #currently here
 
