@@ -1,5 +1,4 @@
 #!/bin/bash
 
-
-sed -i ":syslog_name=postfix/smtps:c  -o syslog_name=postfix/smtps" /etc/postfix/master.cf
-sed -i ":smtpd_tls_wrappermode=yes:c  -o smtpd_tls_wrappermode=yes" /etc/postfix/master.cfw
+#sed -i "29c \  -o syslog_name=postfix/smtps" /etc/postfix/master.cf
+sed -i "31i \  -o smtpd_recipient_restrictions=permit_sasl_authenticated,reject" /etc/postfix/master.cf

@@ -63,9 +63,9 @@ sed -i '/auth_mechanisms =/cauth_mechanisms = plain login' /etc/dovecot/conf.d/1
 
 sed -i "28c \smtps     inet  n       -       -       -       -       smtpd" /etc/postfix/master.cf
 
-sed -i "29c \-o syslog_name=postfix/smtps" /etc/postfix/master.cf
+sed -i "29c \  -o syslog_name=postfix/smtps" /etc/postfix/master.cf
 
-sed -i "30c \-o smtpd_tls_wrappermode=yes" /etc/postfix/master.cf
+sed -i "30c \  -o smtpd_tls_wrappermode=yes" /etc/postfix/master.cf
 
 #currently here
 
