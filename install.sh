@@ -44,13 +44,14 @@ cp /home/pi/email-setup/helo_access.txt helo_access
 postmap /etc/postfix/helo_access
 
 #Dovecot config
-sed -i -e '/#listen =/clisten = *' dovecot.conf
 
+# Backup conf files
 cp /etc/dovecot/conf.d/10-mail.conf /etc/dovecot/conf.d/10-mail.conf.BAK
-
 cp /etc/dovecot/conf.d/10-master.conf /etc/dovecot/conf.d/10-master.conf.BAK
-
 cp /etc/dovecot/conf.d/10-auth.conf /etc/dovecot/conf.d/10-auth.conf.BAK
+cp /etc/dovecot/conf.d/10-ssl.conf /etc/dovecot/conf.d/10-ssl.conf.BAK
+
+sed -i -e '/#listen =/clisten = *' dovecot.conf
 
 #Modify dovecot config files
 
@@ -66,6 +67,8 @@ sed -i "28c \smtps     inet  n       -       -       -       -       smtpd" /etc
 sed -i "29c \  -o syslog_name=postfix/smtps" /etc/postfix/master.cf
 
 sed -i "30c \  -o smtpd_tls_wrappermode=yes" /etc/postfix/master.cf
+
+sed -i 's:ssl = no:ssl = yes:' /etc/dovecot/conf.d/10-ssl.conf
 
 #currently here
 
