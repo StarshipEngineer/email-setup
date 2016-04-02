@@ -70,5 +70,12 @@ sed -i "30c \  -o smtpd_tls_wrappermode=yes" /etc/postfix/master.cf
 
 sed -i 's:ssl = no:ssl = yes:' /etc/dovecot/conf.d/10-ssl.conf
 
+cd /usr/share/dovecot
+./mkcert.sh
+
+sed -i "12c \ssl_cert = </etc/dovecot/dovecot.pem" /etc/dovecot/conf.d/10-ssl.conf
+
+sed -i "13c \ssl_key = </etc/dovecot/private/dovecot.pem" /etc/dovecot/conf.d/10-ssl.conf
+
 #currently here
 
