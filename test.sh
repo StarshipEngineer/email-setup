@@ -2,7 +2,6 @@
 
 #
 
-apt-get -y update
-apt-get -y install squirrelmail
+ln -s /etc/squirrelmail/apache.conf /etc/apache2/conf-enabled/squirrelmail.conf
 
-squirrelmail-configure
+service apache2 reload
