@@ -11,3 +11,12 @@
 #sed -i "13c \ssl_key = </etc/dovecot/private/dovecot.pem" /etc/dovecot/conf.d/10-ssl.conf
 
 #service dovecot reload
+
+apt-get update
+apt-get install apache2
+
+a2enmod ssl
+
+a2ensite default-ssl
+
+service apache2 reload
