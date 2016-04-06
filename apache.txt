@@ -1,0 +1,9 @@
+<IfModule mod_rewrite.c>
+  <IfModule mod_ssl.c>
+    <Location /squirrelmail>
+      RewriteEngine on
+      RewriteCond %{HTTPS} !^on$ [NC]
+      RewriteRule . https://%{HTTP_HOST}%{REQUEST_URI} [L]
+    </Location>
+  </IfModule>
+</IfModule>

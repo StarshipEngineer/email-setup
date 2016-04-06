@@ -76,6 +76,3 @@ cd /usr/share/dovecot
 sed -i "12c \ssl_cert = </etc/dovecot/dovecot.pem" /etc/dovecot/conf.d/10-ssl.conf
 
 sed -i "13c \ssl_key = </etc/dovecot/private/dovecot.pem" /etc/dovecot/conf.d/10-ssl.conf
-
-#currently here
-
