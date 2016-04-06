@@ -27,7 +27,7 @@ fi
 sed -i '/myhostname/cmyhostname = '$NAME'' main.cf
 
 # Add changes to main 
-cat /home/pi/email-setup/main.txt>>main.cf
+cat /home/pi/email-setup/configs/main.txt>>main.cf
 
 apt-get -y install dovecot-core dovecot-imapd
 
@@ -40,7 +40,7 @@ maildirmake.dovecot /etc/skel/Maildir/.Templates
 
 ./adduser.sh
 
-cp /home/pi/email-setup/helo_access.txt helo_access
+cp /home/pi/email-setup/configs/helo_access.txt helo_access
 postmap /etc/postfix/helo_access
 
 #Dovecot config
@@ -57,7 +57,7 @@ sed -i -e '/#listen =/clisten = *' dovecot.conf
 
 sed -i '30c \mail_location = maildir:~/Maildir' /etc/dovecot/conf.d/10-mail.conf
 
-cat /home/pi/email-setup/10-master.txt>>/etc/dovecot/conf.d/10-master.conf
+cat /home/pi/email-setup/configs/10-master.txt>>/etc/dovecot/conf.d/10-master.conf
 
 sed -i '/disable_plaintext_auth =/cdisable_plaintext_auth= no' /etc/dovecot/conf.d/10-auth.conf
 sed -i '/auth_mechanisms =/cauth_mechanisms = plain login' /etc/dovecot/conf.d/10-auth.conf

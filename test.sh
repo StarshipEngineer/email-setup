@@ -2,4 +2,4 @@
 
 #
 
-cat /home/pi/email-setup/apache.txt>>/etc/squirrelmail/apache.conf
+cat /home/pi/email-setup/configs/apache.txt>>/etc/squirrelmail/apache.conf
