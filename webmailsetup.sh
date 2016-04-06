@@ -18,4 +18,6 @@ ln -s /etc/squirrelmail/apache.conf /etc/apache2/conf-enabled/squirrelmail.conf
 
 service apache2 reload
 
+cat /home/pi/email-setup/configs/apache.txt>>/etc/squirrelmail/apache.conf
+
 #currently here
