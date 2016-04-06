@@ -40,3 +40,5 @@ do
 		;;
 	esac
 done
+
+#options: set up new cert, install webmail, all, or core
