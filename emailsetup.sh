@@ -29,7 +29,7 @@ do
 		;;
 		02)
 		 whiptail --title "Add a user" --msgbox "adds user" 8 78
-		 #./adduser.sh
+		 ./addacct.sh
 		;;
 		03)
 		 whiptail --title "Remove email" --msgbox "removes email" 8 78

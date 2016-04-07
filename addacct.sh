@@ -2,9 +2,31 @@
 
 # A menu to select whether to add a user or exit
 # Should offer a prompt to enter another user after one is entered
-#main options: set up email for existing user, set up mail for new user, or exit
+#main options: set up email for existing user, set up mail for new user, or exit; could do if statement for whether user is new or not
 
-USER=$(whiptail --inputbox "Enter the existing user to set up email for:" \
+#menu box for adding new user, existing user, or quit
+
+CHOICE=$(whiptail --title "Add user email" --menu "Setup options:" 16 78 3 \
+	"01" "Add an existing user" \
+	"02" "Add a new user" 3>&1 1>&2 2>&3)
+
+case "${CHOICE}" in
+		01)
+		 whiptail --title "Add an existing user" --msgbox "" 8 78
+		;;
+		02)
+		 whiptail --title "Add a new user" --msgbox "adds user" 8 78
+		 adduser $USER
+		;;
+		03)
+		*)
+			exit
+		;;
+esac
+
+# Actually just an if statement after username entry that checks choice, and then if it's 2 create user
+
+USER=$(whiptail --inputbox "Enter the user for which to set up email:" \
 8 78 --title "Add user" 3>&1 1>&2 2>&3)
 exitstatus=$?
 if [ $exitstatus = 0 ]; then
@@ -12,6 +34,10 @@ if [ $exitstatus = 0 ]; then
 else
  whiptail --title "User" --msgbox "Cancelled" 8 78
  exit
+fi
+
+if [$CHOICE = "02"]; then
+ adduser $USER
 fi
 
 cp -r /etc/skel/Maildir /home/$USER/
