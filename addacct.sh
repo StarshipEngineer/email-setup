@@ -7,22 +7,8 @@
 #menu box for adding new user, existing user, or quit
 
 CHOICE=$(whiptail --title "Add user email" --menu "Setup options:" 16 78 3 \
-	"01" "Add an existing user" \
-	"02" "Add a new user" 3>&1 1>&2 2>&3)
-
-case "${CHOICE}" in
-		01)
-		 whiptail --title "Add an existing user" --msgbox "" 8 78
-		;;
-		02)
-		 whiptail --title "Add a new user" --msgbox "adds user" 8 78
-		 adduser $USER
-		;;
-		03)
-		*)
-			exit
-		;;
-esac
+	"01" "Set up an existing user" \
+	"02" "Set up a new user" 3>&1 1>&2 2>&3)
 
 # Actually just an if statement after username entry that checks choice, and then if it's 2 create user
 
@@ -37,6 +23,7 @@ else
 fi
 
 if [$CHOICE = "02"]; then
+ whiptail --title "Set up new user" --msgbox "You will be asked to enter and confirm a password" 8 78
  adduser $USER
 fi
 

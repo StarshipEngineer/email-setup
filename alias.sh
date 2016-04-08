@@ -1,6 +1,6 @@
 #!/bin/bash
 
-
+#set as a second line thing? or allow set or reset options?
 
 USER=$(whiptail --inputbox "Enter the user for which to set up email:" \
 8 78 --title "Add user" 3>&1 1>&2 2>&3)

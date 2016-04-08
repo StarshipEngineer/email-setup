@@ -31,6 +31,7 @@ cat /home/pi/email-setup/configs/main.txt>>main.cf
 
 apt-get -y install dovecot-core dovecot-imapd
 
+#Set up template folders
 maildirmake.dovecot /etc/skel/Maildir
 maildirmake.dovecot /etc/skel/Maildir/.Drafts
 maildirmake.dovecot /etc/skel/Maildir/.Sent
@@ -38,7 +39,7 @@ maildirmake.dovecot /etc/skel/Maildir/.Spam
 maildirmake.dovecot /etc/skel/Maildir/.Trash
 maildirmake.dovecot /etc/skel/Maildir/.Templates
 
-./adduser.sh
+./adduser.sh #Need this at all yet?
 
 cp /home/pi/email-setup/configs/helo_access.txt helo_access
 postmap /etc/postfix/helo_access
@@ -51,10 +52,8 @@ cp /etc/dovecot/conf.d/10-master.conf /etc/dovecot/conf.d/10-master.conf.BAK
 cp /etc/dovecot/conf.d/10-auth.conf /etc/dovecot/conf.d/10-auth.conf.BAK
 cp /etc/dovecot/conf.d/10-ssl.conf /etc/dovecot/conf.d/10-ssl.conf.BAK
 
-sed -i -e '/#listen =/clisten = *' dovecot.conf
-
 #Modify dovecot config files
-
+sed -i -e '/#listen =/clisten = *' dovecot.conf
 sed -i '30c \mail_location = maildir:~/Maildir' /etc/dovecot/conf.d/10-mail.conf
 
 cat /home/pi/email-setup/configs/10-master.txt>>/etc/dovecot/conf.d/10-master.conf
@@ -63,16 +62,21 @@ sed -i '/disable_plaintext_auth =/cdisable_plaintext_auth= no' /etc/dovecot/conf
 sed -i '/auth_mechanisms =/cauth_mechanisms = plain login' /etc/dovecot/conf.d/10-auth.conf
 
 sed -i "28c \smtps     inet  n       -       -       -       -       smtpd" /etc/postfix/master.cf
-
 sed -i "29c \  -o syslog_name=postfix/smtps" /etc/postfix/master.cf
-
 sed -i "30c \  -o smtpd_tls_wrappermode=yes" /etc/postfix/master.cf
 
 sed -i 's:ssl = no:ssl = yes:' /etc/dovecot/conf.d/10-ssl.conf
 
+#Add a choice?
 cd /usr/share/dovecot
 ./mkcert.sh
 
+#
 sed -i "12c \ssl_cert = </etc/dovecot/dovecot.pem" /etc/dovecot/conf.d/10-ssl.conf
-
 sed -i "13c \ssl_key = </etc/dovecot/private/dovecot.pem" /etc/dovecot/conf.d/10-ssl.conf
+
+#Set first user to be set up as admin
+sed -i "\$apostmaster: $USER" /etc/aliases
+sed -i "\$awebmaster: $USER" /etc/aliases
+sed -i "\$aroot: $USER" /etc/aliases
+newaliases

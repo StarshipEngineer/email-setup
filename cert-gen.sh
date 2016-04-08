@@ -20,18 +20,23 @@ else
  exit
 fi
 
-openssl genrsa -out <filename for your private key>.key 4096
+openssl genrsa -out $FILENAME.key 4096
 
-openssl req -new -key <filename for your private key>.key -out <filename for the CSR>.csr
+openssl req -new -key $FILENAME.key -out $FILENAME.csr
 
 cd ~ wget http://www.cacert.org/certs/root.txt sudo cp root.txt /etc/ssl/certs/cacert-root.crt
 
 c_rehash /etc/ssl/certs
 
-sed -i '\$apostmaster: $' /etc/aliases
-sed -i '\$awebmaster: $' /etc/aliases
-sed -i '$a \root: $' /etc/aliases
-
-newaliases
-
 service postfix reload
+
+
+#Move files
+/etc/ssl/private/samhobbs.key
+/etc/ssl/certs/samhobbs.crt
+
+#Set ownership & permissions
+chown root:root /etc/ssl/private/samhobbs.key
+chmod 600 /etc/ssl/private/samhobbs.key
+chown root:root /etc/ssl/certs/samhobbs.crt
+chmod 644 /etc/ssl/certs/samhobbs.crt
