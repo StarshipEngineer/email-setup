@@ -74,9 +74,3 @@ cd /usr/share/dovecot
 #
 sed -i "12c \ssl_cert = </etc/dovecot/dovecot.pem" /etc/dovecot/conf.d/10-ssl.conf
 sed -i "13c \ssl_key = </etc/dovecot/private/dovecot.pem" /etc/dovecot/conf.d/10-ssl.conf
-
-#Set first user to be set up as admin
-sed -i "\$apostmaster: $USER" /etc/aliases
-sed -i "\$awebmaster: $USER" /etc/aliases
-sed -i "\$aroot: $USER" /etc/aliases
-newaliases
