@@ -11,4 +11,4 @@ else
  whiptail --title "User" --msgbox "Cancelled" 8 78
  exit
 
-whiptail --title "Set up new user" --msgbox "Username: /home/$USER" 8 78
+whiptail --title "Set up new user" --msgbox 'Username: /home/'$USER'' 8 78
