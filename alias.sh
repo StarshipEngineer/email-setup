@@ -1,8 +1,8 @@
 #!/bin/bash
 
-#set as a second line thing? or allow set or reset options?
-
-sed -i
+sed -i "/postmaster/d" /etc/aliases
+sed -i "/webmaster/d" /etc/aliases
+sed -i "/root/d" /etc/aliases
 
 USER=$(whiptail --inputbox "Enter the user to be designated admin:" \
 8 78 --title "Add user" 3>&1 1>&2 2>&3)
