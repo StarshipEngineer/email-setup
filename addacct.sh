@@ -10,8 +10,6 @@ CHOICE=$(whiptail --title "Add user email" --menu "Setup options:" 16 78 3 \
 	"01" "Set up an existing user" \
 	"02" "Set up a new user" 3>&1 1>&2 2>&3)
 
-# Actually just an if statement after username entry that checks choice, and then if it's 2 create user
-
 USER=$(whiptail --inputbox "Enter the user for which to set up email:" \
 8 78 --title "Add user" 3>&1 1>&2 2>&3)
 exitstatus=$?
@@ -23,12 +21,10 @@ else
 fi
 
 if [$CHOICE = "02"]; then
- whiptail --title "Set up new user" --msgbox "You will be asked to enter and confirm a password" 8 78
+ whiptail --title "Set up new user" --msgbox "You will be asked to enter and confirm a password." 8 78
  adduser $USER
 fi
 
 cp -r /etc/skel/Maildir /home/$USER/
 chown -R $USER:$USER /home/$USER/Maildir
 chmod -R 700 /home/$USER/Maildir
-
-# idea- give an option to correct entry, or unnecessary? if it kicks back, should go back to main menu; could do yes/no box in this script to continue or re-enter
